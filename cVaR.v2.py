@@ -56,7 +56,7 @@ def minimize_cVaR(stock_data,cov_Matrix):
     ef = EfficientFrontier(None,cov_Matrix)
     return ef.custom_objective(negative_cvar,stock_data)
 
-#minimize_cVaR outputs dictionary, these lines convert it to an array, this array contains ticker followed by corresping weight
+#minimize_cVaR outputs dictionary, these lines convert it to an array, this array contains ticker followed by corresponding weight
 #we should still write short def to convert this array into array containing only the weights
 def optimalWeights(stcok_data,cov_Matrix):
     opt_Weights = minimize_cVaR(stock_data,cov_Matrix)
