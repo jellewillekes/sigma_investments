@@ -10,8 +10,8 @@ from pypfopt.efficient_frontier import EfficientFrontier
 from pypfopt.objective_functions import negative_cvar
 
 start = '2018-01-01'
-#today = '2021-04-21'
-today = datetime.today().strftime('%Y-%m-%d')
+today = '2021-01-01'
+#today = datetime.today().strftime('%Y-%m-%d')
 
 tickers = pd.read_excel('SigmaInput.xlsx')["Ticker"]
 portfolioWeights = pd.read_excel('SigmaInput.xlsx')["Weight"]
@@ -56,12 +56,13 @@ def minimize_cVaR(stock_data,cov_Matrix):
     ef = EfficientFrontier(None,cov_Matrix)
     return ef.custom_objective(negative_cvar,stock_data)
 
-#minimize_cVaR outputs dictionary, these lines convert it to an array, this array contains ticker followed by corresponding weight
+#minimize_cVaR outputs dictionary, these lines convert it to an array, this array contains ticker followed by corresping weight
 #we should still write short def to convert this array into array containing only the weights
-opt_Weights = minimize_cVaR(retun_data,e_cov)
+opt_Weights = minimize_cVaR(return_data,e_cov)
 data = list(opt_Weights.items())
 theOptimalWeights = np.array(data)
 
 print(cVaR_95)
 print(theOptimalWeights)
+
 
