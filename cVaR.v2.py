@@ -58,9 +58,11 @@ def minimize_cVaR(stock_data,cov_Matrix):
 
 #minimize_cVaR outputs dictionary, these lines convert it to an array, this array contains ticker followed by corresping weight
 #we should still write short def to convert this array into array containing only the weights
-opt_Weights = minimize_cVaR(return_data,e_cov)
-data = list(opt_Weights.items())
-theOptimalWeights = np.array(data)
-print(theOptimalWeights)
+def optimalWeights(stcok_data,cov_Matrix):
+    opt_Weights = minimize_cVaR(stock_data,cov_Matrix)
+    data = list(opt_Weights.items())
+    theOptimalWeights = np.array(data)
+    return theOptimalWeights
 
+print(optimalWeights(return_data,e_cov)
 print(cVaR_95)
